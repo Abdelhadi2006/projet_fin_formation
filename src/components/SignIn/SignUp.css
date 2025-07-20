@@ -1,0 +1,133 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.page-body{
+  background-image: url("/img/Capture\ d’écran\ 2025-07-11\ 225346.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+
+.Sign{
+    background-color: #ffffffc0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 570px;
+    width: 400px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.LogTitle{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap; 
+  accent-color : #feda79;;
+}
+
+.checkbox-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+
+.submit-btn {
+  background-color: #feda79;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 60%;
+  
+}
+
+.submit-btn:hover {
+   box-shadow: 0 4px 8px #0000004d;
+}
+
+
+#image{
+  border-radius: 10px;
+  width: 310px;
+  height: 100%;
+}
+
+#brainerX{
+  background-color: #121a2e ;
+  color: white;
+  border: solid white;
+}
+
+#welcome{
+  font-weight: 600;
+  text-align: center;
+  padding: 20px;
+}
+
+.ekteb{
+  border-radius: 15px;
+  border-color: #000000;
+  height: 30px;
+  width: 200px;
+  padding-left: 10px;
+}
+
+#new{
+  color: white;
+}
+
+.new{
+  border: solid white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.input{
+    margin: 10px;
+    line-height: 20px;
+}
+
+#choix{
+    border: #000000 solid;
+    border-radius: 10px;
+    padding: 3px;
+}
+
+
+.forgot-link {
+  font-size: 0.9rem;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.Title{
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}

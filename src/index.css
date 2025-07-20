@@ -1,0 +1,441 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.bodymain{
+  background-color: black;
+  height: 4000px;
+}
+
+
+.imgNav{
+  background-image: url("/img/background/NEW.png");
+  width: 1264px;
+  height: 960px;
+}
+
+.writing{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+  gap: 20px;
+  color: white;
+}
+
+.navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+#logoGym{
+  width: 60px;
+}
+
+.you{
+  
+  background: linear-gradient(90deg, white, #D6FD51);
+  background-clip: text;;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  top: 160px;
+  left: 91px;
+  font-size: 150px;
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+}
+
+#joinbut, .join{
+  background-color: #D6FD51;
+  color: black;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 20px;
+}
+
+.join:hover {
+  background-color: #8fab35;
+}
+
+.bybs{
+  background: linear-gradient(90deg, white, #D6FD51);
+  background-clip: text;;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  top: 500px;
+  left: 110px;
+  font-size: 30px;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 10px;
+}
+
+.imgInfo{
+  background-image: url("/img/Untitled\ designYUIO\ \(3\).png");
+  width: 1264px;
+  height: 960px;
+}
+
+.aboutus{
+  background: linear-gradient(90deg, white, #D6FD51);
+  background-clip: text;;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  position: absolute;
+  left: 130px;
+  top: 1100px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+.description{
+  color: white;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  position: relative;
+  top: 280px;
+  font-size: 21px;
+  background-color: #ffffff39;
+  padding: 30px  20px;
+  border-radius: 10px;
+  font-family: 'Oswald', sans-serif;
+  margin: 0px 50px;
+}
+
+.logoimg{
+  position: absolute;
+  top: 920px;
+}
+
+.logoGym2{
+  width: 80px;
+  height: auto; 
+}
+
+.gymweb{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 920px;
+  left: 35px;
+  font-size: 30px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  width: 270px;
+}
+
+.ourcoachs{
+  background: linear-gradient(90deg, white, #D6FD51);
+  background-clip: text;;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  position: absolute;
+  left: 130px;
+  top: 1730px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+.coachs{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 40px;
+   position: absolute;
+  left: 200px;
+  top: 1850px;
+}
+
+#coach1{
+  height: 300px;
+  border-radius: 5px;
+}
+
+#coach2{
+  height: 300px;
+  border-radius: 5px;
+}
+
+#coach3{
+  height: 300px;
+  border-radius: 5px;
+}
+
+.textcoach{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  top: -100px;
+  font-weight: 550;
+  font-family: 'Oswald', sans-serif;
+}
+
+.textcoach1{
+  background-color: #D6FD51;
+  padding: 20px  40px;
+  border-radius: 20px;
+  margin-left: 70px;
+  margin-bottom: 20px;
+}
+
+.textcoach2{
+  background-color: #D6FD51;
+  padding: 20px  40px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.textcoach3{
+  background-color: #d6fd51;
+  padding: 20px  40px;
+  border-radius: 20px;
+  margin-right: 70px;
+  margin-bottom: 20px;
+}
+
+.SubscriptionTitle{
+  background: linear-gradient(90deg, white, #D6FD51);
+  background-clip: text;;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  position: absolute;
+  left: 130px;
+  top: 2350px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+.frame{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  top: 50px;
+  gap: 10px;
+  
+}
+
+.frame1{
+  background: linear-gradient(180deg, #000000, #2f2f2f94);
+  padding: 30px 60px;
+  border-radius: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+}
+
+.frame2{
+  background: linear-gradient(180deg, #000000, #2f2f2f94);
+  padding: 30px 60px;
+  border-radius: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+}
+
+.frame3{
+  background: linear-gradient(180deg, #000000, #2f2f2f94);
+  padding: 30px 60px;
+  border-radius: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+}
+
+.TextFrame{
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 44px;
+}
+
+.TitleFrame1{
+  padding-bottom: 30px;
+  color: rgb(97, 97, 97);
+  text-align: center;
+  font-weight: 600;
+}
+
+.TitleFrame2{
+  padding-bottom: 30px;
+  color: rgb(97, 97, 97);
+  text-align: center;
+  font-weight: 600;
+}
+
+.TitleFrame3{
+  padding-bottom: 30px;
+  color: rgb(97, 97, 97);
+  text-align: center;
+  font-weight: 600;
+}
+
+.prix{
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: solid #D6FD51;
+  border-top: solid #D6FD51;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.WhyTitle{
+  background: linear-gradient(90deg, white, #D6FD51);
+  background-clip: text;;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  position: absolute;
+  left: 130px;
+  top: 3230px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+.contentWhy{
+  color: #ffffff;
+  background: linear-gradient(270deg, #000000, #2626267b);
+  position: absolute;
+  top: 3330px;
+  left: 150px;
+  font-size: 25px;
+  font-family: 'Oswald', sans-serif;
+  line-height: 55px;
+  width: 1000px;
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+.Contact{
+  background-color: #0f0f0f;
+  position: absolute;
+  top: 3660px;
+  width: 100%;
+  height: 350px;
+}
+
+.ContactUs{
+  background: linear-gradient(90deg, white, #D6FD51);
+  background-clip: text;;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  position: absolute;
+  left: 130px;
+  top: 60px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+.insta{
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  padding-bottom: 20px;
+  position: absolute;
+  left: 100px;
+  top: 160px;
+}
+
+.fb{
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  position: absolute;
+  left: 100px;
+  top: 200px;
+}
+
+#joinbut{
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.picwhy{
+  position: absolute;
+  top: 3360px;
+  width: 250px;
+  left: 950px;
+}
+
+.picswhy{
+  position: absolute;
+  top: 3310px;
+  left: 900px;
+  width: 250px;
+}
+
+.three{
+  position: absolute;
+  top: 1850px;
+  left: -50px;
+}
+
+.three2{
+  position: absolute;
+  top: 1850px;
+  right: 0px;
+}
+
+.subback{
+  position: absolute;
+  top: 2722px;
+  right: 0px;
+}
+
+
+@media only screen and (max-width: 1262px) {
+.bodymain{
+  background-color: black;
+  height: 4000px;
+  width: 1265px;
+}
+.Contact{
+  background-color: #0f0f0f;
+  position: absolute;
+  top: 3660px;
+  width: 1265px;
+  height: 344px;
+}
+}
+
+@media only screen and (max-width: 1200px) {
+
+.three2{
+  position: absolute;
+  top: 1850px;
+  left: 600px;
+}
+
+.description{
+  color: white;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  position: relative;
+  left: 110px;
+  right: 110px;
+  top: 1220px;
+  font-size: 17px;
+  background-color: #ffffff39;
+  padding: 30px  20px;
+  border-radius: 10px;
+  font-family: 'Oswald', sans-serif;
+  line-height: 20px;
+}
+
+}

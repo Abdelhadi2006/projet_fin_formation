@@ -1,0 +1,130 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.page-body{
+  background-image: url("/img/Capture\ d’écran\ 2025-07-11\ 225346.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+
+.Log{
+    background-color: #ffffffc0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 480px;
+    width: 400px;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.LogTitle{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap; 
+  accent-color: #feda79;;
+}
+
+.checkbox-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.forgot-link {
+  font-size: 0.9rem;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.submit-butn {
+  background-color: #feda79;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 25px;
+  width: 60%;
+  
+}
+
+.submit-butn:hover {
+   box-shadow: 0 4px 8px #0000004d;
+}
+
+#image{
+  border-radius: 10px;
+  width: 310px;
+  height: 100%;
+}
+
+
+#welcome{
+  font-weight: 600;
+  text-align: center;
+  padding: 30px;
+}
+
+.ekteb{
+  border-radius: 15px;
+  border-color: #000000;
+  height: 30px;
+  width: 200px;
+  padding-left: 10px;
+}
+
+#new{
+  color: white;
+}
+
+.new{
+  border: solid white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+#email{
+    margin: 20px;
+    
+}
+
+#password{
+    margin: 20px;
+    line-height: 30px;
+}
+
+.Title{
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.emailch{
+  position: absolute;
+  top: 190px;
+}
+
+.paswch{
+  position: absolute;
+  top: 190px;
+  left: 200px;
+}
