@@ -1,133 +1,195 @@
-*{
-    padding: 0px;
-    margin: 0px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.page-body{
-  background-image: url("/img/Capture\ d’écran\ 2025-07-11\ 225346.png");
+.page-body {
+  background-image: url("/img/background/signlog.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
 }
 
-
-.Sign{
-    background-color: #ffffffc0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 570px;
-    width: 400px;
-    border-radius: 10px;
-    padding: 25px;
+.Sign {
+  background-color: #ffffffd9;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 32px #00000033;
+  backdrop-filter: blur(5px);
+  border: 1px solid #ffffff33;
 }
 
-.LogTitle{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+.LogTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.Title {
+  background-color: black;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+#welcome {
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 0 20px;
+}
+
+#welcome p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.input {
+  margin-bottom: 20px;
+}
+
+.input p {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.ekteb {
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.ekteb:focus {
+  outline: none;
+  border-color: #D6FD51;
+  box-shadow: 0 0 0 2px #cdfe794d;
+}
+
+#choix {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: 100%;
+  background-color: white;
 }
 
 #forgot {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  flex-wrap: wrap; 
-  accent-color : #feda79;;
+  margin: 20px 0;
+  flex-wrap: wrap;
 }
 
 .checkbox-display {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
+  gap: 8px;
+  font-size: 15px;
+  color: #555;
 }
 
+.checkbox-display input {
+  accent-color: #D6FD51;
+}
+
+.forgot-link {
+  font-size: 0.85rem;
+  color: #555;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+#showLog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 15px;
+}
+
+.login-link{
+  margin: 10px;
+  cursor: pointer;
+}
+
+.login-link :hover{
+  color: #D6FD51;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
 
 .submit-btn {
-  background-color: #feda79;
+  background: linear-gradient(to right, #e1ff7d, #D6FD51);
   color: black;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
-  margin: 0 auto;
-  width: 60%;
-  
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 
 .submit-btn:hover {
-   box-shadow: 0 4px 8px #0000004d;
+  box-shadow: 0 4px 12px #a4c33faa;
+  transform: translateY(-1px);
 }
 
-
-#image{
-  border-radius: 10px;
-  width: 310px;
-  height: 100%;
+.submit-btn:active {
+  transform: translateY(0);
 }
 
-#brainerX{
-  background-color: #121a2e ;
-  color: white;
-  border: solid white;
-}
-
-#welcome{
-  font-weight: 600;
-  text-align: center;
-  padding: 20px;
-}
-
-.ekteb{
-  border-radius: 15px;
-  border-color: #000000;
-  height: 30px;
-  width: 200px;
-  padding-left: 10px;
-}
-
-#new{
-  color: white;
-}
-
-.new{
-  border: solid white;
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.input{
-    margin: 10px;
-    line-height: 20px;
-}
-
-#choix{
-    border: #000000 solid;
-    border-radius: 10px;
-    padding: 3px;
-}
-
-
-.forgot-link {
-  font-size: 0.9rem;
-  color: #000000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.Title{
-    background-color: black;
-    padding: 10px;
-    border-radius: 10px;
-    color: white;
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .error {
   color: red;
-  font-weight: bold;
-  margin-top: 10px;
+  font-size: 0.9rem;
+  margin: 5px 0 15px;
+  text-align: center;
+  font-weight: 540;
+}
+
+.email-error,
+.password-error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+#gender {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+@media (max-width: 480px) {
+  .Sign {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  .submit-btn {
+    padding: 10px;
+  }
 }

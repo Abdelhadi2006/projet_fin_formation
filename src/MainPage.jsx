@@ -12,7 +12,7 @@ function MainPage() {
     const checkAndGo = () => {
       go('/SignUp');
     
-  };
+  }; // function : Going to signUp page
 
   const aboutSection = useRef(null);
   const homeSection = useRef(null);
@@ -20,7 +20,7 @@ function MainPage() {
 
   const scrollto = (ref) => {
     ref.current.scrollIntoView({ behavior: 'smooth' });
-  };
+  }; // function : scroll to a section according to ref
 
   return (
     <>
@@ -30,11 +30,11 @@ function MainPage() {
       <div className="writing">
             <img id="logoGym" className='cursor' onClick={() => scrollto(homeSection)} src="./img/background/barbell.png"/>
             <div className="writing">
-            <p className='cursor' onClick={() => scrollto(homeSection)}>Home</p>
+            <p className='cursor' onClick={() => scrollto(homeSection)}>Home</p> {/* Going to a home section ki nkounou par example f contact section */}
             <p className='cursor' onClick={() => scrollto(aboutSection)}>About</p>
             <p className='cursor' onClick={() => scrollto(contactSection)}>Contact</p>
             </div>
-            <div className="join" ><input id="joinbut" type="submit" value="Join Us" onClick={checkAndGo} />
+            <div className="join" ><input id="joinbut" type="submit" value="Join Us" onClick={checkAndGo} /> {/* Going to signup page */}
         </div>
       </div>
       </nav>
@@ -173,7 +173,7 @@ function MainPage() {
             <img className="picswhy" src="./img/background/Rectangle 23.png" />
         </div>
 
-        <div ref={contactSection} className="Contact">
+        <div ref={contactSection} className="Contact"> {/* dertha simple */}
         <div className="ContactUs">
             <p>Contact Us</p>
         </div>

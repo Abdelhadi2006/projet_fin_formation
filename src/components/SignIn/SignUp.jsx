@@ -6,61 +6,55 @@ import axios from 'axios';
 function SignUp() {
   const [email, setEmail] = useState('');
   const [checking, setChecking] = useState(false);
-  const [pasw, setPasw] = useState('');
-  const [affiche, setAffiche] = useState(false);
-  const [value, setValue] = useState('male');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [gender, setGender] = useState('male');
   const [familyName, setFamilyName] = useState('');
   const [surname, setSurname] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const confirmEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const confirmPassword = pasw.length >= 8;
-  const go = useNavigate();
+  const navigate = useNavigate();
 
-  const disp = () => setAffiche(!affiche);
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // function : validation of the email syntax
+  const isValidPassword = password.length >= 8; // function : validation of the password length
 
-  const LogInPage = () => go('/LogIn');
-
-  const [haveAccount, setHaveAccount] = useState(false);
-
-  const checkIfUserExists = async () => {
-    const res = await axios.get(`http://localhost:4000/check-user/SignUp`);
-    setAlreadyRegistered(res.data.exists);
-  };
+  const PasswordVisibility = () => setShowPassword(!showPassword); // function : show the password
+  const goToLogin = () => navigate('/LogIn'); // function : going to the login page if the user have already an account
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setChecking(true);
+  e.preventDefault();
+  setChecking(true);
+  setErrorMessage('');
 
-    if (!confirmEmail || !confirmPassword) {
-      console.log('Invalid email or password');
-      return;
-    }
+  if (!isValidEmail || !isValidPassword || !familyName || !surname) {
+    setErrorMessage('Please fill all the fields'); // error function : if the user didnt fill the forms correctly
+    setChecking(false);
+    return;
+  }
 
-    const newUser = {
+  try {
+    const response = await axios.post('http://localhost:4000/signup', {
       familyName,
       surname,
+      gender,
       email,
-      password: pasw,
-      gender: value
-    };
+      password
+    }); // creating an new user
 
-    try {
-      const res = await axios.post('http://localhost:4000/SignUp', newUser);
-      if (res.data.message === "Email already exists") {
-      return("this account already exists");
-    }
-      console.log(res.data);
-      localStorage.setItem('user', JSON.stringify(newUser));
+    localStorage.setItem('user', JSON.stringify(response.data.user)); // stock the user data in the localstorage
+    localStorage.setItem('token', response.data.token); // stock the token in the localstorage
 
-      if (value === 'male') {
-        go('/Male');
-      } else if(value === 'female') {
-        go('/Female');
-      }
-    } catch (err) {
-      console.error('Error sending data:', err);
+    navigate(gender === 'male' ? '/Male' : '/Female'); // function : navigate according to the user gender
+
+  } catch (error) {
+    setChecking(false);
+    if (error.response) {
+      setErrorMessage(error.response.data.message || 'Registration failed');
+    } else {
+      setErrorMessage('Network error. Please check your connection.');
     }
-  };
+    console.error('Registration error:', error);
+  }
+};
 
   return (
     <div className='page-body'>
@@ -72,7 +66,9 @@ function SignUp() {
             <p>Please enter your personal informations</p>
           </div>
         </div>
-        {errorMessage && <p className="error">{errorMessage}</p>}
+        
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        
         <form onSubmit={handleSubmit}>
           <div className='input'>
             <p>Family Name</p>
@@ -80,8 +76,9 @@ function SignUp() {
               className="ekteb"
               placeholder="Enter your Family Name"
               type="text"
-              value={familyName}
+              value={familyName} // collecting the family name value
               onChange={(e) => setFamilyName(e.target.value)}
+              required
             />
           </div>
 
@@ -93,12 +90,16 @@ function SignUp() {
               type="text"
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
+              required
             />
           </div>
 
           <div className='input'>
-            <label htmlFor="choix">Gender : </label>
-            <select id="choix" value={value} onChange={(e) => setValue(e.target.value)}>
+            <label htmlFor="gender">Gender : </label>
+            <select 
+              id="gender" 
+              value={gender} 
+              onChange={(e) => setGender(e.target.value)}>
               <option value='male'>Male</option>
               <option value='female'>Female</option>
             </select>
@@ -111,58 +112,52 @@ function SignUp() {
               placeholder="Enter your email"
               type="email"
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setHaveAccount(false);
-                setChecking(false);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-
-            {haveAccount && (
-              <p style={{ color: "red" }}>
-                already exists
-              </p>
+            {checking && !isValidEmail && (
+              <p className='email-error'>Please enter a valid email</p>
             )}
-
           </div>
-
-          {checking && (
-            <p className='emailch' style={{ color: confirmEmail ? 'green' : 'red' }}>
-              {confirmEmail ? '' : ' Email invalid'}
-            </p>
-          )}
 
           <div className='input'>
             <p>Password</p>
             <input
               className="ekteb"
-              placeholder="Enter your password"
-              type={affiche ? "text" : "password"}
-              value={pasw}
-              onChange={(e) => {
-                setPasw(e.target.value);
-                setChecking(false);
-              }}
+              placeholder="Enter your password (min 8 characters)"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength="8"
             />
+            {checking && !isValidPassword && (
+              <p className='password-error'>Password must be at least 8 characters</p>
+            )}
           </div>
 
-          {checking && (
-            <p className='paswch' style={{ color: confirmPassword ? '' : 'red' }}>
-              {confirmPassword ? '' : ' Minimum 8 caractères '}
-            </p>
-          )}
-
-          <div id="forgot" className="input">
-            <label htmlFor="display" className="checkbox-display">
-              <input type="checkbox" id="display" onClick={disp} />
-              Display
+          <div id='showLog' className="input">
+            <label htmlFor="showPassword" className="checkbox-display">
+              <input 
+                type="checkbox" 
+                id="showPassword" 
+                checked={showPassword}
+                onChange={PasswordVisibility} 
+              />
+              Show Password
             </label>
-            <p className="forgot-link" onClick={LogInPage}>You already have an account ?</p>
+            <p className="login-link" onClick={goToLogin}>
+              Already have an account?
+            </p>
           </div>
 
-          <div className="forgot">
-            <button type="submit" className="submit-btn">
-              Sign In
+          <div className="submit-container">
+            <button 
+              type="submit" 
+              className="submit-btn"
+              disabled={checking}
+            >
+              {checking ? 'Creating account...' : 'Sign Up'} 
             </button>
           </div>
         </form>

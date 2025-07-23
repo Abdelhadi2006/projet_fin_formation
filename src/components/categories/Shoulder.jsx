@@ -1,16 +1,18 @@
 import React from "react";
 import './Workout.css';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Shoulder() {
 
     const [index, setIndex] = useState(0);
+    const navigate = useNavigate();
     
-
-      const slides = [
+      const slides = [  // slides te3 exercices with the pic and the title
         {
           src: "/img/shoulder/developpe-arnold-exercice-musculation.gif",
-          title: "Développé arnold"
+          title: "Développé arnold",
+          path: "/arnold"
         },
         {
           src: "/img/shoulder/face-pull.gif",
@@ -59,7 +61,7 @@ function Shoulder() {
 
       ];
     
-      const itemWidth = 400;
+      const itemWidth = 400; // the width of the carousel to show three slides at the same time
     
       const nextSlide = () => {
         if (index < slides.length - 3) {
@@ -67,7 +69,7 @@ function Shoulder() {
         } else {
           setIndex(0);
         }
-      };
+      };   // function : go to the right
     
       const prevSlide = () => {
         if (index > 0) {
@@ -75,7 +77,11 @@ function Shoulder() {
         } else {
           setIndex(slides.length - 3);
         }
-      };
+      };  // function : go to the left
+
+      const slideclick = (path) => {
+        navigate(path);
+    };  // function : going to the slide that the user clicked on
     
       return (
         <div className="carousel-container-s">
@@ -87,13 +93,13 @@ function Shoulder() {
     
           <div
             className="carousel-track-w"
-            style={{ transform: `translateX(-${index * itemWidth}px)` }}
+            style={{ transform: `translateX(-${index * itemWidth}px)` }}  // translation with one and showing 3 slides at the same time
           >
             {slides.map((slide, i) => (
-              <div className="carousel-item-w" key={i}>
+              <div className="carousel-item-w" key={i} onClick={() => slideclick(slide.path)} style={{ cursor: 'pointer' }}>
                 <img src={slide.src} alt={`slide-${i}`} />
                 <h3 className="slide-title-w">{slide.title}</h3>
-              </div>
+              </div>  // styling the slide
             ))}
           </div>
     

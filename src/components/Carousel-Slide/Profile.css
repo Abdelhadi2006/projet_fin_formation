@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pfp-container{
+    background-image: url("/img/ChatGPT\ Image\ Jul\ 21\,\ 2025\,\ 11_23_44\ PM.png");
+    height: 880px;
+}
+
+.Workout-bar-P {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  gap: 30px;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+}
+
+.pfp {
+  clip-path: circle(35%);
+  height: 300px;
+}
+
+.Name-p {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 30px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  border-top: solid black;
+  border-bottom: solid black;
+  padding: 10px;
+}
+
+.infoprofile {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  width: 800px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.info-container {
+  background-color: #ffffffb0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; 
+  padding: 30px 0; 
+  width: 600px;
+  height: 670px;
+  position: relative;
+  top: 100px;
+  left: 330px;
+  border-radius: 10px;
+}
+
+.disconnectpfp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+  top: 210px;
+}
+
+.backgroundpfp {
+  width: 100%;
+  display: block;
+}
+
+
+.photo-upload-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+.pfp {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle(50% at center);
+  border: 4px solid black;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.pfp:hover {
+  transform: scale(1.05);
+}
+
+.upload-indicator {
+  position: absolute;
+  bottom: -30px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: black;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+}
+
+.hidden-upload {
+  display: none;
+}

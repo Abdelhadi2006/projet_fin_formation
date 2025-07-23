@@ -13,20 +13,29 @@ import { TiSocialFacebookCircular } from "react-icons/ti";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import SlideProfile from '../SlideProfile';
+import { useEffect } from "react";
+import SlideProfile from '../Carousel-Slide/SlideProfile';
 import { RxCrossCircled } from "react-icons/rx";
 
 
 function Workout() {
 
     const typeWorkout = ['Shoulders', 'Chest', 'Back', 'Leg', 'Biceps & Triceps', 'Cardio'];
+    const [userData, setUserData] = useState(null);
+    const navigate = useNavigate();
+      
+    useEffect(() => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                setUserData(user);
+            }
+    }, []);
 
-      const home = useNavigate();
-      const contactSection = useRef(null);
+    const contactSection = useRef(null);
 
-      const goto = () =>{
-            home('/Male');
-      }
+    const checkAndGo = () => {
+        navigate(userData?.gender === 'female' ? '/Female' : '/Male');
+    };
     
       const scrollto = (ref) => {
         ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -39,10 +48,10 @@ function Workout() {
       const submitInput = () => {
         event.preventDefault();
         if(!value) {
-            alert('please write something');
+            alert('search for the category');
         }else{
                 console.log(value)
-        }
+        }   // function : searching the category of workout
         
       }
 
@@ -55,21 +64,21 @@ function Workout() {
         <div className="Workout-nav">
         <nav>
               <div className="Workout-bar">
-                    <AiOutlineBars className='cursor' id='logomoree' onClick={() => setIsOpen(true)} />
+                    <AiOutlineBars className='cursor' id='logomoree' onClick={() => setIsOpen(true)} /> {/* opening the slideprofile */}
                    <div className="Workout-bar">
-                    <p className='cursor' onClick={goto}>Home</p>
+                    <p className='cursor' onClick={checkAndGo}>Home</p>
                     <p className='cursor' onClick={()=> scrollto(contactSection)}>Contact</p>
                     </div>
                     <div className="workout-input">
                     <FaSearch />
                     <form onSubmit={submitInput}>
                     <input className="workout-input" value={value} onChange={(e) => setValue(e.target.value)} placeholder="Search" type="search" />
-                    </form>
+                    </form>   {/* collecting the value of the search */}
                     </div>
               </div>
-              <div className={`panel ${isOpen ? 'open' : ''}`}>
-            <RxCrossCircled className='butn-cross' onClick={() => setIsOpen(false)}/>
-            <SlideProfile/>
+              <div className={`panel ${isOpen ? 'open' : ''}`}> {/* opening the slideprofile */}
+            <RxCrossCircled className='butn-cross' onClick={() => setIsOpen(false)}/>  {/* closing the slideprofile */}
+            <SlideProfile/>  
         </div>
         </nav>
         </div>
@@ -79,59 +88,20 @@ function Workout() {
             <p>Gym Web</p>
         </div>
 
-
-        {typeWorkout
+            {/* maping to search the corresponding category from the value */}
+        {typeWorkout  
             .filter((workout) => workout.toLowerCase().includes(value.toLowerCase()))
             .map((workout, index) => (
         <div key={index} className={`${workout}`}>
-      <h3>{workout}</h3>
-      {workout === 'Shoulders' && <Shoulder />}
-      {workout === 'Chest' && <Chest />}
-      {workout === 'Back' && <Back />}
-      {workout === 'Leg' && <Leg />}
-      {workout === 'Biceps & Triceps' && <Biceps />}
-      {workout === 'Cardio' && <Cardio />}
+            <h3>{workout}</h3>
+            {workout === 'Shoulders' && <Shoulder />}
+            {workout === 'Chest' && <Chest />}
+            {workout === 'Back' && <Back />}
+            {workout === 'Leg' && <Leg />}
+            {workout === 'Biceps & Triceps' && <Biceps />}
+            {workout === 'Cardio' && <Cardio />}
         </div>
-    ))}
-
-
-
-
-        {/* <div className="Shoulders">
-            <p>Shoulders</p>
-        </div>
-
-        <Shoulder/>
-
-        <div className="Chest">
-            <p>Chest</p>
-        </div>
-
-        <Chest/>
-
-        <div className="Back">
-            <p>Back</p>
-        </div>
-
-        <Back/>
-
-        <div className="Leg">
-            <p>Leg</p>
-        </div>
-
-        <Leg/>
-
-        <div className="Biceps">
-            <p>Biceps & Triceps</p>
-        </div>
-
-        <Arm/>
-
-        <div className="Cardio">
-            <p>Cardio</p>
-        </div>
-
-        <Cardio/> */}
+        ))}   
 
         <div ref={contactSection} className="Contact-w">
                 <div className="ContactUs-w">

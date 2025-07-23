@@ -1,130 +1,174 @@
-*{
-    padding: 0px;
-    margin: 0px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.page-body{
-  background-image: url("/img/Capture\ d’écran\ 2025-07-11\ 225346.png");
+.page-body {
+  background-image: url("/img/background/signlog.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.Log{
-    background-color: #ffffffc0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 480px;
-    width: 400px;
-    border-radius: 10px;
-    padding: 30px;
+.Log {
+  background-color: #ffffffd9;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 32px #00000033;
+  backdrop-filter: blur(5px);
+  border: 1px solid #ffffff33;
 }
 
-.LogTitle{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+.LogTitle {
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-.forgot {
+.Title {
+  background-color: black;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+#welcome {
+  font-weight: 600;
+  text-align: center;
+  padding: 15px 0 25px;
+}
+
+#welcome p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.input-field {
+  margin-bottom: 20px;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #D6FD51;
+  box-shadow: 0 0 0 2px #cdfe794d;
+}
+
+.form-options {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  flex-wrap: wrap; 
-  accent-color: #feda79;;
+  margin: 20px 0;
+  flex-wrap: wrap;
 }
 
-.checkbox-display {
+.checkbox-label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
-}
-
-.forgot-link {
-  font-size: 0.9rem;
-  color: #000000;
-  text-decoration: none;
+  gap: 8px;
+  font-size: 15px;
+  color: #555;
   cursor: pointer;
 }
 
-.submit-butn {
-  background-color: #feda79;
+.checkbox-label input {
+  accent-color: #D6FD51;
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  color: #555;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #D6FD51;
+  text-decoration: underline;
+}
+
+.submit-button {
+  background: linear-gradient(to right, #e1ff7d, #D6FD51);
   color: black;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
-  margin: 0 auto;
-  margin-top: 25px;
-  width: 60%;
-  
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 
-.submit-butn:hover {
-   box-shadow: 0 4px 8px #0000004d;
+.submit-button:hover {
+  box-shadow: 0 4px 12px #a4c33faa;
+  transform: translateY(-1px);
 }
 
-#image{
-  border-radius: 10px;
-  width: 310px;
-  height: 100%;
+.submit-button:active {
+  transform: translateY(0);
 }
 
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
-#welcome{
-  font-weight: 600;
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin: 5px 0 15px;
   text-align: center;
-  padding: 30px;
+  font-weight: 540;
 }
 
-.ekteb{
-  border-radius: 15px;
-  border-color: #000000;
-  height: 30px;
-  width: 200px;
-  padding-left: 10px;
+.input-error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
 }
 
-#new{
-  color: white;
-}
-
-.new{
-  border: solid white;
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-#email{
-    margin: 20px;
-    
-}
-
-#password{
-    margin: 20px;
-    line-height: 30px;
-}
-
-.Title{
-    background-color: black;
+@media (max-width: 480px) {
+  .Log {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  .submit-button {
     padding: 10px;
-    border-radius: 10px;
-    color: white;
-}
-
-.emailch{
-  position: absolute;
-  top: 190px;
-}
-
-.paswch{
-  position: absolute;
-  top: 190px;
-  left: 200px;
+  }
+  
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }

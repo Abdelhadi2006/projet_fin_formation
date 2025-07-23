@@ -6,7 +6,7 @@ function Back() {
 
     const [index, setIndex] = useState(0);
     
-      const slides = [
+      const slides = [  // slides te3 exercices with the pic and the title
         {
           src: "/img/Back/tirage-horizontal-poulie.gif",
           title: "Tirage horizontal à la poulie"
@@ -70,7 +70,7 @@ function Back() {
 
       ];
     
-      const itemWidth = 400;
+      const itemWidth = 400;  // the width of the slides
     
       const nextSlide = () => {
         if (index < slides.length - 3) {
@@ -78,7 +78,7 @@ function Back() {
         } else {
           setIndex(0);
         }
-      };
+      }; // function : go to the right
     
       const prevSlide = () => {
         if (index > 0) {
@@ -86,7 +86,7 @@ function Back() {
         } else {
           setIndex(slides.length - 3);
         }
-      };
+      };  // function : go to the left
     
       return (
         <div className="carousel-container-b">
@@ -96,13 +96,13 @@ function Back() {
     
           <div
             className="carousel-track-w"
-            style={{ transform: `translateX(-${index * itemWidth}px)` }}
+            style={{ transform: `translateX(-${index * itemWidth}px)` }}  // translation of the slide
           >
             {slides.map((slide, i) => (
               <div className="carousel-item-w" key={i}>
-                <img src={slide.src} alt={`slide-${i}`} />
+                <img src={slide.src} alt={`${slide.title}`} />
                 <h3 className="slide-title-w">{slide.title}</h3>
-              </div>
+              </div>   // styling the slide
             ))}
           </div>
     

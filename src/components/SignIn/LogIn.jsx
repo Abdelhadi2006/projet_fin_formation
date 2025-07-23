@@ -1,136 +1,121 @@
-import './LogIn.css'
-import React from "react";
+import './LogIn.css';
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import axios from 'axios';
 
 function LogIn() {
-
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const [checking, setChecking] = useState(false);
-
-  const [pasw, setPasw] = useState('');
-
-  const [affiche, setAffiche] = useState(false);
-
-  const confirmEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const confirmPassword = pasw.length >= 8;
-
-  const go = useNavigate();
-
-  const disp = () => {
-    setAffiche(!affiche);
-  };
-
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // function : validation of the email syntax
+  const isValidPassword = password.length >= 8; // function : validation of the password length
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-  setChecking(true);
-
-  if (!confirmEmail || !confirmPassword) {
-    console.log('Invalid email or password');
-    return;
-  }
-
-  const datafront = {
-    email,
-    password: pasw
-  };
+  setError('');
+  setIsLoading(true);
 
   try {
-    const res = await axios.post('http://localhost:4000/LogIn', datafront);
-    console.log(res.data);
+    const response = await axios.post('http://localhost:4000/LogIn', {
+      email,
+      password
+    }); // checking if the user account exist
 
-    if (res.data.token) {
+    if (response.data.token) {
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       
-      localStorage.setItem("token", res.data.token);
-
-      if (res.data.gender === "male") {
-        go('/Male');
+      const userGender = response.data.user.gender;
+      console.log("User gender:", userGender); 
+      
+      if (userGender === "male") {
+        navigate('/Male');
+      } else if (userGender === "female") {
+        navigate('/Female');
       } else {
-        go('/Female');
+        navigate('/signup');
       }
-    } else {
-      alert("Invalid credentials");
     }
   } catch (err) {
-    console.error('Error sending data:', err);
+  } finally {
+    setIsLoading(false);
   }
 };
 
-
   return (
     <div className='page-body'>
-    <div className="Log">
-    <div className="LogTitle">
-      <div className='Title'><h2 >Log In</h2></div>
-      <div id="welcome">
-        <h2>Welcome</h2>
-        <p>Please enter your personal informations</p>
+      <div className="Log">
+        <div className="LogTitle">
+          <div className='Title'><h2>Log In</h2></div>
+          <div id="welcome">
+            <h2>Welcome</h2>
+            <p>Please enter your personal informations</p>
+          </div>
+        </div>
+
+        {error && <p className="error-message">{error}</p>}
+
+        <form onSubmit={handleSubmit}>
+          <div className="input-field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              className="form-input"
+              placeholder="Enter your email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            {isLoading && !isValidEmail && (
+              <p className="input-error">Please enter a valid email</p>
+            )}
+          </div>
+
+          <div className="input-field">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              className="form-input"
+              placeholder="Enter your password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength="8"
+            />
+            {isLoading && !isValidPassword && (
+              <p className="input-error">Password must be at least 8 characters</p>
+            )}
+          </div>
+
+          <div className="form-options">
+            <label className="checkbox-label">
+              <input 
+                type="checkbox" 
+                checked={showPassword}
+                onChange={() => setShowPassword(!showPassword)} 
+              />
+              Show Password
+            </label>
+            <button type="button" className="forgot-password">
+              Forgot Password?
+            </button>
+          </div>
+
+          <button 
+            type="submit" 
+            className="submit-button"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Logging in...' : 'Log In'}
+          </button>
+        </form>
       </div>
-      </div>
-
-      <form onSubmit={handleSubmit}>
-  <div id="email">
-    <p>Email</p>
-    <input
-      className="ekteb"
-      placeholder="Enter your email"
-      type="email"
-      value={email}
-      onChange={(e) => {
-        setEmail(e.target.value);
-        setChecking(false);
-      }}
-    />
-  </div>
-
-  {checking && (
-    <p className='emailch' style={{ color: confirmEmail ? 'green' : 'red' }}>
-      {confirmEmail ? '' : 'Email invalid'}
-    </p>
-  )}
-
-  <div id="password">
-    <p>Password</p>
-    <input
-      className="ekteb"
-      placeholder="Enter your password"
-      type={affiche ? "text" : "password"}
-      value={pasw}
-      onChange={(e) => {
-        setPasw(e.target.value);
-        setChecking(false);
-      }}
-    />
-  </div>
-
-  {checking && (
-    <p className='paswch' style={{ color: confirmPassword ? '' : 'red' }}>
-      {confirmPassword ? '' : 'Minimum 8 caractères'}
-    </p>
-  )}
-
-  <div className="forgot">
-    <label htmlFor="display" className="checkbox-display">
-      <input type="checkbox" id="display" onClick={disp} />
-      Display
-    </label>
-    <p className="forgot-link">Forget Password?</p>
-  </div>
-
-  <div className="forgot">
-    <input
-      type="submit"
-      value="Sign In"
-      className="submit-butn"
-    />
-  </div>
-</form>
-
-    </div>
     </div>
   );
 }
